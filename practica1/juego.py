@@ -69,21 +69,25 @@ class Partida:
             self.jugador2 = Jugador(nombre, 'humano')
 
 if __name__ == '__main__':
-    print('Comienza el juego')
-    partida = Partida()
-    j1 = partida.jugador1
-    j2 = partida.jugador2
-    resultado = 3
-    j1.pensar()
-    while resultado != 0:
-        n_propuesto = j2.proponer()
-        partida.num_intentos+=1
-        resultado = j1.comprobar(n_propuesto)
-        if resultado == 0:
-            print('{} ha acertado en {} intento(s)'.format(j2.nombre, partida.num_intentos))
-        elif resultado == -1 and j2.tipo != 'IA':
-            print('El número pensado es mayor que {}'.format(n_propuesto))
-        elif resultado == 1 and j2.tipo != 'IA':
-            print('El número pensado es menor que {}'.format(n_propuesto))
+    respuesta = 'S'
+    while respuesta == 'S':
+        print('Comienza el juego')
+        partida = Partida()
+        j1 = partida.jugador1
+        j2 = partida.jugador2
+        resultado = 3
+        j1.pensar()
+        while resultado != 0:
+            n_propuesto = j2.proponer()
+            partida.num_intentos+=1
+            resultado = j1.comprobar(n_propuesto)
+            if resultado == 0:
+                print('{} ha acertado en {} intento(s)'.format(j2.nombre, partida.num_intentos))
+            elif resultado == -1 and j2.tipo != 'IA':
+                print('El número pensado es mayor que {}'.format(n_propuesto))
+            elif resultado == 1 and j2.tipo != 'IA':
+                print('El número pensado es menor que {}'.format(n_propuesto))
+        print('¿Quieres seguir jugando? S/N')
+        respuesta = input()
 
 
