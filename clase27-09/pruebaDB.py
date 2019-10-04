@@ -1,0 +1,10 @@
+import sqlite3
+conn = sqlite3.connect("ejemplo.db")
+c = conn.cursor()
+c.execute("SELECT * FROM Clientes;")
+print(c.fetchone())
+query = ("select * from sqlite_master where type='table';")
+c = conn.execute(query)
+res = c.fetchall()
+print([res[1] for row in res])
+conn.close()
