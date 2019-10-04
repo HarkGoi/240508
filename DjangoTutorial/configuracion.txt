@@ -1,0 +1,2 @@
+alumno@A30904:~/practicas/DjangoTutorial$ source venv/bin/activate
+(venv) alumno@A30904:~/practicas/DjangoTutorial$ django-admin
