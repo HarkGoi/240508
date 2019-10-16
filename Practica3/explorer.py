@@ -34,13 +34,13 @@ def saludo():
     return "Explorer for {}".format(app.config['db'])
 
 
-@app.route("html/tablas")
+@app.route("/html/tablas")
 def obtenertablas():
     res = db_query("select * from sqlite_master where type='table';")
     return render_template('infotablas.html', tablas=res)
 
 
-@app.route("html/tablas/<name>")
+@app.route("/html/tablas/<name>")
 def tabla(name):
     if comprobar_tabla(name) == False:
         return render_template('error.html', name=name)
@@ -52,13 +52,12 @@ def tabla(name):
     res = c.fetchone()
     while res != None:
         lc.append(res[1])
-        print(res[1])
         res = c.fetchone()
     # y el contenido de la tabla
     res = db_query("select * from {};".format(name))
     return render_template('contenidotablas.html', listacolumnas=lc, name=name, tabla=res)
 
-@app.route("html/tablas/<name>/info")
+@app.route("/html/tablas/<name>/info")
 def infotabla(name):
     if comprobar_tabla(name) == False:
         return render_template('error.html', name=name)
@@ -70,7 +69,6 @@ def infotabla(name):
     res = c.fetchone()
     while res != None:
         lc.append(res[1])
-        print (res[1])
         res = c.fetchone()
     c.execute("select count(*) from {}".format(name))
     numregistros = c.fetchone()[0]
@@ -98,7 +96,6 @@ def infotablaJ(name):
     res = c.fetchone()
     while res != None:
         lc.append(res[1])
-        print (res[1])
         res = c.fetchone()
     c.execute("select count(*) from {}".format(name))
     l = []
