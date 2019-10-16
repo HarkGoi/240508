@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title%}DB{% endblock %}
+
+{% block content %}
+<h1>Información de la tabla {{name}} </h1>
+<p>
+    <table border>
+        <tr>
+            <td> Columnas </td>
+            {% for nomcolumna in listacolumnas %}
+                    <td> {{nomcolumna}}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            <td> Num Registros</td>
+            <td colspan="{{anchura}}"> {{numregistros}}</td>
+        </tr>
+    </table>
+</p>
+{% endblock %}
